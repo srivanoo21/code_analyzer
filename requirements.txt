@@ -1,0 +1,9 @@
+openai==0.28
+tiktoken            # It is specifically designed for use with OpenAI's models, especially GPT-3. 
+                    # It's primary function is text tokenization using the Byte Pair Encoding (BPE) algorithm
+chromadb==0.4.24
+langchain==0.0.249
+flask
+GitPython           # allows you to interact with Git repositories from Python code.
+python-dotenv
+-e .
