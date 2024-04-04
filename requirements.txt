@@ -6,4 +6,7 @@ langchain==0.0.249
 flask
 GitPython           # allows you to interact with Git repositories from Python code.
 python-dotenv
+sentence-transformers
+langchain-core
+langchain-community
 -e .

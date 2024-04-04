@@ -5,6 +5,7 @@ from langchain.document_loaders.parsers import LanguageParser
 from langchain.text_splitter import Language
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 
 
 # clone any github repositories 
@@ -40,7 +41,7 @@ def text_splitter(documents):
 
 
 
-# loading embeddings model
+# loading the embedding model
 def load_embedding():
-    embeddings = OpenAIEmbeddings(disallowed_special=())
-    return embeddings
+    embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    return embedding_function
