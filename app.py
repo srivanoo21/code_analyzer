@@ -1,12 +1,14 @@
-from langchain.vectorstores import Chroma
+#from langchain.vectorstores import Chroma
 from src.helper import load_embedding
 from dotenv import load_dotenv
 import os
 from src.helper import repo_ingestion
 from flask import Flask, render_template, jsonify, request
-from langchain.chat_models import ChatOpenAI
+#from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationSummaryMemory
 from langchain.chains import ConversationalRetrievalChain
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.vectorstores import Chroma
 
 
 app = Flask(__name__)
@@ -25,7 +27,12 @@ vectordb = Chroma(persist_directory=persist_directory, embedding_function=embedd
 
 
 llm = ChatOpenAI()
+
+# This line sets up a memory component specifically designed to store and potentially retrieve a 
+# conversation history associated with a particular LLM.
 memory = ConversationSummaryMemory(llm=llm, memory_key = "chat_history", return_messages=True)
+
+# This line configures a question-answering component within a conversational system.
 qa = ConversationalRetrievalChain.from_llm(llm, retriever=vectordb.as_retriever(search_type="mmr", search_kwargs={"k":8}), memory=memory)
 
 
