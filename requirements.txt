@@ -4,6 +4,7 @@ tiktoken            # It is specifically designed for use with OpenAI's models, 
 chromadb==0.4.24
 langchain==0.0.249
 flask
+shutil
 GitPython           # allows you to interact with Git repositories from Python code.
 python-dotenv
 sentence-transformers
